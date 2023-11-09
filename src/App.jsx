@@ -1,7 +1,6 @@
 import "./App.css";
-import axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // COMPONENTS
 import Header from "./components/Header";
 //PAGES
@@ -9,8 +8,6 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 
 function App() {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
   const [offer, setOffer] = useState();
 
   const handleOnClick = (elem) => {
@@ -18,24 +15,7 @@ function App() {
     setOffer(elem._id);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
-        );
-        // console.log(response.data);
-        setData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.response);
-      }
-    };
-    fetchData();
-  }, []);
-  return isLoading ? (
-    <span>Loading...</span>
-  ) : (
+  return (
     <Router>
       <Header />
       <Routes>

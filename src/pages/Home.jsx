@@ -51,6 +51,7 @@ const Home = ({ handleOnClick }) => {
                     handleOnClick(elem);
                   }}
                 >
+                  <p>{elem.owner.account.username}</p>
                   <img
                     className="img-offer"
                     src={elem.product_image.url}
