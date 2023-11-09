@@ -6,10 +6,17 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 //PAGES
 import Home from "./pages/Home";
+import Offer from "./pages/Offer";
 
 function App() {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [offer, setOffer] = useState();
+
+  const handleOnClick = (elem) => {
+    console.log("je suis clique sur l'offre");
+    setOffer(elem._id);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,11 +33,17 @@ function App() {
     };
     fetchData();
   }, []);
-  return (
+  return isLoading ? (
+    <span>Loading...</span>
+  ) : (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route
+          path="/"
+          element={<Home handleOnClick={handleOnClick} />}
+        ></Route>
+        <Route path="/offers/:id" element={<Offer />}></Route>
       </Routes>
     </Router>
   );

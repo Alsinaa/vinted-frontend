@@ -1,0 +1,32 @@
+header {
+  /* background-color: plum; */
+  width: 1280px;
+  height: 120px;
+}
+.buttons {
+  display: flex;
+}
+.hero img {
+  /* border: 2px solid; */
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+.img-container {
+  border: 1px solid olive;
+  background-color: white;
+  border-radius: 5px;
+  height: 300px;
+  width: 310px;
+}
+.img-offer {
+  width: 195px;
+  height: 260px;
+  object-fit: cover;
+}
+.offer-section {
+  border: 1px solid lightsalmon;
+  display: flex;
+  overflow: scroll hidden;
+  gap: 10px;
+}
