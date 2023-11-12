@@ -32,7 +32,7 @@ const Offer = () => {
     <main>
       <Link to="/">Retour vers la page home</Link>
       <div>
-        <div>
+        <div className="avatar">
           <img src={data.owner.account.avatar.secure_url} alt="" />
           <span>{data.owner.account.username}</span>
         </div>
