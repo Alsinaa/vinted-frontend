@@ -1,7 +1,7 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLocation } from "react-router-dom";
-import CheckoutForm from "../components/CheckOutForm";
+import CheckoutForm from "../components/CheckoutForm";
 
 const Payment = () => {
   const stripePromise = loadStripe(
