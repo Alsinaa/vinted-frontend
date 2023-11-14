@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const Home = ({ handleOnClick }) => {
+const Home = ({ handleOnClick, search, sortPrice }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   // console.log(data);
@@ -10,7 +10,9 @@ const Home = ({ handleOnClick }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${
+            sortPrice ? "price-desc" : "price-asc"
+          }&title=${search}`
         );
         // console.log(response.data);
         setData(response.data);
@@ -20,7 +22,7 @@ const Home = ({ handleOnClick }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading ? (
     <span>Loading...</span>

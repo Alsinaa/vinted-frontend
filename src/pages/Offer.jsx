@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState();
@@ -10,6 +11,7 @@ const Offer = () => {
   const params = useParams();
   const id = params.id;
   //   console.log(params);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +35,7 @@ const Offer = () => {
       <Link to="/">Retour vers la page home</Link>
       <div>
         <div className="avatar">
-          <img src={data.owner.account.avatar.secure_url} alt="" />
+          {/* <img src={data.owner.account.avatar.secure_url} alt="" /> CONDITION A FAIRE POUR AFFICHER LES AVATAR OU NON  */}
           <span>{data.owner.account.username}</span>
         </div>
         <img src={data.product_image.url} alt="" />
@@ -51,6 +53,19 @@ const Offer = () => {
           );
         })}
         <p>{data.product_description} </p>
+
+        <button
+          onClick={() => {
+            navigate("/payment", {
+              state: {
+                title: data.product_name,
+                price: data.product_price,
+              },
+            });
+          }}
+        >
+          Acheter
+        </button>
       </div>
     </main>
   );
